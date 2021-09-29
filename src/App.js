@@ -3,6 +3,7 @@ import './App.css';
 import Axios from 'axios';
 import Recipe from './components/Recipe';
 import Alert from './components/Alert';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 	const [cuisine, setCuisine] = useState('');
@@ -76,9 +77,7 @@ function App() {
 			</form>
 			<div className='recipes'>
 				{recipes !== [] &&
-					recipes.map((recipe) => (
-						<Recipe key={recipe.id} recipe={recipe} API_KEY={API_KEY} />
-					))}
+					recipes.map((recipe) => <Recipe key={uuidv4()} recipe={recipe} />)}
 			</div>
 		</div>
 	);
