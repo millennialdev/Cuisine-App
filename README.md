@@ -12,6 +12,8 @@
 
 #### Make sure to read through the requirements section of this `README.md` file and make sure that you have everything required. After you have a copy of the repository on your computer, you will need to navigate in your terminal over to the root folder for this project.
 
+#### Go into the root folder and create a .env file and add your spoonacular API key as the value for a variable named `REACT_APP_API_KEY`.
+
 #### From there you will need go into the root folder for this project. Once you are in the directory, you will want to run the following command : `npm install`.
 
 #### After all of your dependancies are installed, you will now want to the the following commands within the root folder for this project:
