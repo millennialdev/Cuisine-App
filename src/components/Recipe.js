@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import IngredientDetails from './IngredientDetails';
 import RecipeDetails from './RecipeDetails';
 import Axios from 'axios';
 
 const Recipe = ({ recipe }) => {
 	const [ingredients, setIngredients] = useState([]);
-	const [content, setConent] = useState({ image: '', summary: '' });
 	const [showIngredients, setShowIngredients] = useState(false);
 	const [showRecipe, setShowRecipe] = useState(false);
+	const [showSummary, setShowSummary] = useState(false);
+	const [content, setContent] = useState({
+		image: '',
+		summary: '',
+		instructions: '',
+	});
 	const { title, sourceUrl, id } = recipe;
 	const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -16,9 +22,10 @@ const Recipe = ({ recipe }) => {
 		const getData = async () => {
 			const result = await Axios.get(url);
 			setIngredients(result.data.extendedIngredients);
-			setConent({
+			setContent({
 				image: `${result.data.image}`,
 				summary: `${result.data.summary}`,
+				instructions: `${result.data.instructions}`,
 			});
 		};
 		getData();
@@ -35,12 +42,19 @@ const Recipe = ({ recipe }) => {
 				className='url-link'>
 				URL
 			</a>
+
+			{/* Ingrediants Section */}
 			<button onClick={() => setShowIngredients(!showIngredients)}>
 				Ingredients
 			</button>
-			{showIngredients && <RecipeDetails ingredients={ingredients} />}
+			{showIngredients && <IngredientDetails ingredients={ingredients} />}
 
-			{showRecipe ? (
+			{/* Recipe Section */}
+			<button onClick={() => setShowRecipe(!showRecipe)}>Recipe</button>
+			{showRecipe && <RecipeDetails recipe={content.instructions} />}
+
+			{/* Summary Section */}
+			{showSummary ? (
 				<p
 					className='recipe-text'
 					dangerouslySetInnerHTML={{ __html: `${content.summary}` }}></p>
@@ -53,7 +67,7 @@ const Recipe = ({ recipe }) => {
 			)}
 			<button
 				className='show-full-text'
-				onClick={() => setShowRecipe(!showRecipe)}>
+				onClick={() => setShowSummary(!showSummary)}>
 				{showRecipe ? 'show less' : 'show more'}
 			</button>
 		</div>

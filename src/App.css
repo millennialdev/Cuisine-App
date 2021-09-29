@@ -227,6 +227,10 @@ button.show-full-text:hover {
 	margin: 0.5rem 0;
 }
 
+.ingredient-list .ingredient-text > p {
+	margin: 0.5rem;
+}
+
 .ingredient-text {
 	font-size: 1.5rem;
 	color: #fff;
