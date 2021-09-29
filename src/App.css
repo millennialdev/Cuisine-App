@@ -42,16 +42,26 @@ h1 {
 
 .search-form {
 	cursor: pointer;
-	width: 60rem;
-	height: 10rem;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	flex-direction: column;
 	align-items: center;
 	background-color: var(--equipment-color);
 	border-radius: 0.5rem;
 	margin-bottom: 5rem;
+	padding: 25px 0;
 	box-shadow: 0.5rem 1rem 2.5rem var(--tag-color);
 	position: relative;
+}
+
+.search-form .inputs-container {
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+.search-form .inputs-container input {
+	margin: 1rem auto;
+	width: 80% !important;
 }
 
 .alert {
