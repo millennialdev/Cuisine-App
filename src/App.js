@@ -3,6 +3,7 @@ import './App.css';
 import Axios from 'axios';
 import Recipe from './components/Recipe';
 import Alert from './components/Alert';
+import Printer from './components/Printer';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
 	return (
 		<div className='App'>
 			<h1>Cuisine Helper {process.env.API_KEY}</h1>
+			<Printer />
 			<form onSubmit={onSubmit} className='search-form'>
 				{alert !== '' && <Alert alert={alert} />}
 				<div className='inputs-container'>
@@ -55,6 +57,7 @@ function App() {
 						value={cuisine}
 						autoComplete='off'
 						placeholder='Enter a cuisine'
+						required
 					/>
 					<input
 						type='text'

@@ -4,8 +4,9 @@ import Axios from 'axios';
 
 const Recipe = ({ recipe }) => {
 	const [ingredients, setIngredients] = useState([]);
-	const [image, setImage] = useState('');
-	const [show, setShow] = useState(false);
+	const [content, setConent] = useState({ image: '', summary: '' });
+	const [showIngredients, setShowIngredients] = useState(false);
+	const [showRecipe, setShowRecipe] = useState(false);
 	const { title, sourceUrl, id } = recipe;
 	const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -15,7 +16,10 @@ const Recipe = ({ recipe }) => {
 		const getData = async () => {
 			const result = await Axios.get(url);
 			setIngredients(result.data.extendedIngredients);
-			setImage(result.data.image);
+			setConent({
+				image: `${result.data.image}`,
+				summary: `${result.data.summary}`,
+			});
 		};
 		getData();
 	}, [url]);
@@ -23,7 +27,7 @@ const Recipe = ({ recipe }) => {
 	return (
 		<div className='recipe'>
 			<h2>{title}</h2>
-			<img src={image} alt={title} />
+			<img src={content.image} alt={title} />
 			<a
 				href={sourceUrl}
 				target='_blank'
@@ -31,8 +35,27 @@ const Recipe = ({ recipe }) => {
 				className='url-link'>
 				URL
 			</a>
-			<button onClick={() => setShow(!show)}>Ingredients</button>
-			{show && <RecipeDetails ingredients={ingredients} />}
+			<button onClick={() => setShowIngredients(!showIngredients)}>
+				Ingredients
+			</button>
+			{showIngredients && <RecipeDetails ingredients={ingredients} />}
+
+			{showRecipe ? (
+				<p
+					className='recipe-text'
+					dangerouslySetInnerHTML={{ __html: `${content.summary}` }}></p>
+			) : (
+				<p
+					className='recipe-text'
+					dangerouslySetInnerHTML={{
+						__html: `${content.summary.substr(0, 200)}&nbsp...`,
+					}}></p>
+			)}
+			<button
+				className='show-full-text'
+				onClick={() => setShowRecipe(!showRecipe)}>
+				{showRecipe ? 'show less' : 'show more'}
+			</button>
 		</div>
 	);
 };

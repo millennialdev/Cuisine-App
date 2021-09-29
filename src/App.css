@@ -6,7 +6,7 @@
 	--subject-color: #ffaf60;
 	--location-color: hsl(164, 28%, 30%);
 	--equipment-color: hsl(222, 21%, 39%);
-	--tag-color: hsl(184, 42%, 41%);
+	--tag-color: hsl(164, 88%, 80%);
 	--conditions-color: #ffa48e;
 }
 
@@ -38,6 +38,16 @@ h1 {
 	text-shadow: 0 0.1rem 2.5rem var(--tag-color);
 	text-transform: uppercase;
 	margin: 4rem 0;
+}
+
+#print {
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	fill: white;
+	position: absolute;
+	top: 30px;
+	right: 30px;
 }
 
 .search-form {
@@ -157,6 +167,7 @@ h1 {
 	border: none;
 	border-radius: 0.5rem;
 	height: 3rem;
+	margin: 1.5rem 0 0.5rem;
 }
 
 .url-link {
@@ -177,6 +188,32 @@ h1 {
 .recipe > button:hover {
 	color: var(--subject-color);
 	background-color: #fff;
+}
+
+.recipe-text {
+	font-size: 15px;
+	color: #fff;
+	margin-top: 2rem;
+}
+
+.recipe-text a {
+	color: var(--conditions-color);
+	transition: all 0.33s ease-in-out;
+}
+
+.recipe-text a:hover {
+	color: var(--subject-color);
+}
+
+button.show-full-text {
+	font-size: 16px;
+	background: transparent;
+	color: hsl(30, 100%, 79%);
+	margin-top: 0;
+}
+
+button.show-full-text:hover {
+	background: transparent;
 }
 
 .ingredient-list {
