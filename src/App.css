@@ -1,38 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
+
+:root {
+	--main-bg-color: #262933;
+	--main-bg-color-alt: hsl(226, 15%, 27%);
+	--subject-color: #ffaf60;
+	--location-color: hsl(164, 28%, 30%);
+	--equipment-color: hsl(222, 21%, 39%);
+	--tag-color: hsl(184, 42%, 41%);
+	--conditions-color: #ffa48e;
+}
+
+* {
+	font-family: 'Vidaloka', serif;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style-type: none;
+	outline: none;
+}
+
+html {
+	background: var(--main-bg-color);
+	font-size: 62.5%;
+}
+
 .App {
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+	font-size: 8rem;
+	letter-spacing: 0.1rem;
+	font-style: italic;
+	color: var(--subject-color);
+	text-shadow: 0 0.1rem 2.5rem var(--tag-color);
+	text-transform: uppercase;
+	margin: 4rem 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search-form {
+	cursor: pointer;
+	width: 60rem;
+	height: 10rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--equipment-color);
+	border-radius: 0.5rem;
+	margin-bottom: 5rem;
+	box-shadow: 0.5rem 1rem 2.5rem var(--tag-color);
+	position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.alert {
+	position: absolute;
+	top: -3rem;
+	left: 0;
+	background-color: var(--conditions-color);
+	width: calc(100% - 0.4rem);
+	border-radius: 0.5rem;
+	padding: 0.2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.alert h3 {
+	font-size: 1.8rem;
+	color: #fff;
+	font-weight: 400;
+	text-transform: uppercase;
+	text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-form input {
+	font-size: 1.6rem;
+	border: none;
+	border-bottom: 0.1rem solid #ccc;
+	margin: 0 0.5rem;
+	border-radius: 0.5rem;
+	height: 3rem;
+}
+
+.search-form input[type='text'] {
+	padding: 0 0.5rem;
+	width: 60%;
+	color: #555;
+}
+
+.search-form input[type='submit'] {
+	width: 25%;
+	text-transform: uppercase;
+	background-color: var(--subject-color);
+	color: #fff;
+}
+
+.recipes {
+	width: 90%;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.recipe {
+	width: 30rem;
+	margin: 3rem;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--location-color);
+	padding: 2rem;
+	position: relative;
+	border-radius: 0.5rem;
+	box-shadow: 0.2rem 0.3rem 0.5rem var(--tag-color);
+}
+
+.recipe h2 {
+	background-color: rgba(161, 161, 161, 0.7);
+	border-radius: 0.5rem;
+	padding: 0.3rem 0.5rem;
+	position: absolute;
+	top: 2.5rem;
+	left: 2.5rem;
+	right: 2.5rem;
+	font-size: 2.5rem;
+	font-weight: 400;
+	text-shadow: 0 0.5rem 0.5rem #555;
+	color: #fff;
+}
+
+.recipe img {
+	border-radius: 0.5rem;
+	object-fit: cover;
+}
+
+.recipe a {
+	font-size: 1.8rem;
+	color: var(--subject-color);
+}
+
+.recipe button {
+	font-size: 2rem;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: var(--subject-color);
+	border: none;
+	border-radius: 0.5rem;
+	height: 3rem;
+}
+
+.url-link {
+	margin: 1rem auto;
+	transition: color 300ms ease;
+}
+
+.recipe > .url-link:hover {
+	color: #fff;
+}
+
+.recipe > button {
+	cursor: pointer;
+	transition: color 150ms ease-in;
+	transition: background-color 350ms ease-out;
+}
+
+.recipe > button:hover {
+	color: var(--subject-color);
+	background-color: #fff;
+}
+
+.ingredient-list {
+	margin-top: 1rem;
+	background-color: var(--main-bg-color-alt);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
+
+.ingredient-list li {
+	margin: 0.5rem 0;
+}
+
+.ingredient-text {
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+.ingredient-weight {
+	color: var(--subject-color);
+	font-size: 1.3rem;
 }
