@@ -240,3 +240,56 @@ button.show-full-text:hover {
 	color: var(--subject-color);
 	font-size: 1.3rem;
 }
+
+@media screen and (max-width: 830px) {
+	h1 {
+		font-size: 6rem;
+	}
+
+	.search-form {
+		transform: scale(0.8);
+	}
+}
+
+@media screen and (max-width: 667px) {
+	h1,
+	.search-form {
+		margin-bottom: 0;
+	}
+
+	h1 {
+		font-size: 4rem;
+	}
+
+	.search-form {
+		transform: scale(0.6);
+	}
+}
+
+@media screen and (max-width: 526px) {
+	#print {
+		top: 10px;
+		right: 10px;
+	}
+}
+
+@media screen and (max-width: 444px) {
+	#print {
+		position: relative;
+		top: 20px;
+	}
+
+	.search-form {
+		width: 135%;
+	}
+}
+
+@media screen and (max-width: 444px) {
+	h1 {
+		font-size: 3.2rem;
+	}
+
+	.recipe {
+		transform: scale(0.8);
+	}
+}
